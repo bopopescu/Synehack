@@ -24,6 +24,7 @@ Example usage:
 # [START import_libraries]
 import argparse
 import io
+import os
 # [END import_libraries]
 
 
@@ -32,7 +33,7 @@ def transcribe_file(speech_file):
     from google.cloud import speech
     speech_client = speech.Client()
 
-    with io.open(speech_file, 'rb') as audio_file:
+    with open(speech_file, 'rb') as audio_file:
         content = audio_file.read()
         audio_sample = speech_client.sample(
             content=content,
@@ -41,10 +42,10 @@ def transcribe_file(speech_file):
             sample_rate_hertz=16000)
 
     alternatives = audio_sample.recognize('en-US')
-    f = open('output.txt','w')
+    fo = open("Inputs/file_"+`speech_file`+".txt","w")
     for alternative in alternatives:
-        print >> f , format(alternative.transcript)
-    f.close()
+        print >> fo , format(alternative.transcript)
+    fo.close()
 
 
 def transcribe_gcs(gcs_uri):
@@ -63,6 +64,11 @@ def transcribe_gcs(gcs_uri):
         print('Transcript: {}'.format(alternative.transcript))
 
 
+#indir = '/home/tazeen/Desktop/speech_python/resources'
+for fn in os.listdir('/home/tazeen/Desktop/speech_python/r'):
+     if os.path.isfile(fn):
+        transcribe_file(fn)
+'''
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description=__doc__,
@@ -74,3 +80,6 @@ if __name__ == '__main__':
         transcribe_gcs(args.path)
     else:
 	transcribe_file(args.path)
+'''
+
+
