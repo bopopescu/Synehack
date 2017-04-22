@@ -41,8 +41,10 @@ def transcribe_file(speech_file):
             sample_rate_hertz=16000)
 
     alternatives = audio_sample.recognize('en-US')
+    f = open('output.txt','w')
     for alternative in alternatives:
-        print('Transcript: {}'.format(alternative.transcript))
+        print >> f , format(alternative.transcript)
+    f.close()
 
 
 def transcribe_gcs(gcs_uri):
@@ -50,7 +52,7 @@ def transcribe_gcs(gcs_uri):
     from google.cloud import speech
     speech_client = speech.Client()
 
-    audio_sample = speech_client.sample(
+    audio_sample = speech_client.sample(					
         content=None,
         source_uri=gcs_uri,
         encoding='FLAC',
