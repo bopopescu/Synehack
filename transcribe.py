@@ -22,12 +22,12 @@ Example usage:
 """
 
 # [START import_libraries]
-import argparse
+#import argparse
 import io
 import os
 import re
-# [END import_libraries]
 
+# [END import_libraries]
 
 def transcribe_file(speech_file):
     """Transcribe the given audio file."""
@@ -49,7 +49,7 @@ def transcribe_file(speech_file):
     fo.close()
 
 
-def transcribe_gcs(gcs_uri):
+'''def transcribe_gcs(gcs_uri):
     """Transcribes the audio file specified by the gcs_uri."""
     from google.cloud import speech
     speech_client = speech.Client()
@@ -62,7 +62,7 @@ def transcribe_gcs(gcs_uri):
 
     alternatives = audio_sample.recognize('en-US')
     for alternative in alternatives:
-        print('Transcript: {}'.format(alternative.transcript))
+        print('Transcript: {}'.format(alternative.transcript))'''
 
 
 #indir = '/home/tazeen/Desktop/speech_python/resources'
