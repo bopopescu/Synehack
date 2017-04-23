@@ -1,26 +1,5 @@
 #!/usr/bin/env python
 
-# Copyright 2017 Google Inc. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-"""Google Cloud Speech API sample application using the REST API for batch
-processing.
-Example usage:
-    python transcribe.py resources/audio.raw
-    python transcribe.py gs://cloud-samples-tests/speech/brooklyn.flac
-"""
-
 # [START import_libraries]
 #import argparse
 import io
@@ -49,22 +28,6 @@ def transcribe_file(speech_file):
     fo.close()
 
 
-'''def transcribe_gcs(gcs_uri):
-    """Transcribes the audio file specified by the gcs_uri."""
-    from google.cloud import speech
-    speech_client = speech.Client()
-
-    audio_sample = speech_client.sample(					
-        content=None,
-        source_uri=gcs_uri,
-        encoding='FLAC',
-        sample_rate_hertz=16000)
-
-    alternatives = audio_sample.recognize('en-US')
-    for alternative in alternatives:
-        print('Transcript: {}'.format(alternative.transcript))'''
-
-
 #indir = '/home/tazeen/Desktop/speech_python/resources'
 for fn in os.listdir('/home/tazeen/Desktop/speech_python/r'):
      if os.path.isfile(fn):
@@ -76,7 +39,6 @@ c=0
 a=0
 s=0
 o=0
-#import os
 indir = '/home/tazeen/Desktop/speech_python/Inputs'
 for root, dirs, filenames in os.walk(indir):
     for f in filenames:
