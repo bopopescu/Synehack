@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2017 at 09:06 AM
+-- Generation Time: Apr 23, 2017 at 09:50 AM
 -- Server version: 10.0.29-MariaDB-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-1+deb.sury.org~xenial+1
 
@@ -257,24 +257,25 @@ INSERT INTO `customer_transactions` (`id`, `ACCOUNTID`, `TRANSACTIONID`, `BALANC
 
 CREATE TABLE `transaction` (
   `ACCOUNTID` bigint(20) DEFAULT NULL,
-  `NUMBER_OF_TRANSACTIONS` int(11) DEFAULT NULL
+  `NUMBER_OF_TRANSACTIONS` int(11) DEFAULT NULL,
+  `PROBLEM_DOMAIN` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`ACCOUNTID`, `NUMBER_OF_TRANSACTIONS`) VALUES
-(891272, 18),
-(567538, 23),
-(500724, 31),
-(914466, 27),
-(783774, 35),
-(663702, 26),
-(636714, 14),
-(878538, 12),
-(450148, 32),
-(839923, 22);
+INSERT INTO `transaction` (`ACCOUNTID`, `NUMBER_OF_TRANSACTIONS`, `PROBLEM_DOMAIN`) VALUES
+(891272, 18, 'call Issues'),
+(567538, 23, 'Others'),
+(500724, 31, 'ATM Issues'),
+(914466, 27, 'Bank Services'),
+(783774, 35, NULL),
+(663702, 26, 'ATM Issues'),
+(636714, 14, 'Call Issues'),
+(878538, 12, 'Others'),
+(450148, 32, 'Call Issues'),
+(839923, 22, 'ATM Issues');
 
 --
 -- Indexes for dumped tables
